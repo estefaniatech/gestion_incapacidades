@@ -42,12 +42,10 @@ pytest -q
 
 La base de datos local queda en `data/` (fuera de Git). Los certificados digitales en `archivos_digitales/`.
 
-
-
-
-activar correo desde powershell:
+cosas nuevas:
 
 $env:SMTP_HOST="smtp.gmail.com"
 $env:SMTP_PORT="465"
 $env:SMTP_USUARIO="tucorreo@gmail.com"
 $env:SMTP_CLAVE="contraseña-de-aplicación"
+python app.py
