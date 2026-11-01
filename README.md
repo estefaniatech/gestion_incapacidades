@@ -51,4 +51,3 @@ $env:SMTP_HOST="smtp.gmail.com"
 $env:SMTP_PORT="465"
 $env:SMTP_USUARIO="tucorreo@gmail.com"
 $env:SMTP_CLAVE="contraseña-de-aplicación"
-python app.py
