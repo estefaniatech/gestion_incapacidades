@@ -45,8 +45,6 @@ La base de datos local queda en `data/` (fuera de Git). Los certificados digital
 
 
 
-comandos:
-
 activar correo desde powershell:
 
 $env:SMTP_HOST="smtp.gmail.com"
