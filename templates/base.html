@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}Gestión de incapacidades{% endblock %}</title>
+  <style>
+    :root { --bg:#f4f1ea; --ink:#1f2a24; --card:#fff; --accent:#1d6b4f; --muted:#6b7280; --line:#e5e0d6; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Georgia, "Segoe UI", sans-serif; background:var(--bg); color:var(--ink); }
+    header { background:#16382d; color:#fff; padding:14px 24px; display:flex; justify-content:space-between; align-items:center; }
+    header a { color:#d7efe4; text-decoration:none; margin-left:12px; font-size:14px; }
+    nav { background:#1d6b4f; padding:8px 16px; display:flex; flex-wrap:wrap; gap:8px; }
+    nav a { color:#fff; text-decoration:none; padding:6px 10px; border-radius:6px; font-size:13px; }
+    nav a:hover { background:#14523c; }
+    main { padding:24px; max-width:1200px; margin:0 auto; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:16px; }
+    table { width:100%; border-collapse:collapse; font-size:14px; }
+    th, td { border-bottom:1px solid var(--line); padding:8px; text-align:left; }
+    input, select, textarea, button { font: inherit; padding:8px; border-radius:8px; border:1px solid #cfc8ba; }
+    button, .btn { background:var(--accent); color:#fff; border:none; cursor:pointer; text-decoration:none; display:inline-block; }
+    .flash { padding:10px; border-radius:8px; margin-bottom:10px; }
+    .success { background:#dcfce7; } .danger { background:#fee2e2; } .warning { background:#fef3c7; } .info { background:#e0f2fe; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px; }
+    .kpi { background:#fff; padding:16px; border-radius:12px; border:1px solid var(--line); }
+    .muted { color:var(--muted); font-size:13px; }
+    form.inline { display:inline; }
+  </style>
+</head>
+<body>
+<header>
+  <strong>Gestión de incapacidades</strong>
+  <div>
+    {% if session.usuario %}
+      {{ session.nombre }} · {{ session.rol }}
+      <a href="{{ url_for('logout') }}">Salir</a>
+    {% endif %}
+  </div>
+</header>
+{% if session.usuario %}
+<nav>
+  <a href="{{ url_for('inicio') }}">Inicio</a>
+  <a href="{{ url_for('recepcion.listar') }}">Recepción</a>
+  <a href="{{ url_for('transcripcion.listar') }}">Transcripción</a>
+  <a href="{{ url_for('liquidacion.listar') }}">Liquidación</a>
+  <a href="{{ url_for('monitoreo.panel') }}">Monitoreo</a>
+  <a href="{{ url_for('cobro.bandeja') }}">Cobro</a>
+  <a href="{{ url_for('cartera.panel') }}">Cartera</a>
+  <a href="{{ url_for('juridico.bandeja') }}">Jurídico</a>
+  <a href="{{ url_for('conciliacion.panel') }}">Conciliación</a>
+  <a href="{{ url_for('nomina.panel') }}">Nómina</a>
+  <a href="{{ url_for('ausentismo.panel') }}">Ausentismo</a>
+  <a href="{{ url_for('archivo.panel') }}">Archivo</a>
+  <a href="{{ url_for('ia.panel') }}">IA</a>
+  {% if session.rol == 'admin' %}<a href="{{ url_for('usuarios') }}">Usuarios</a>{% endif %}
+</nav>
+{% endif %}
+<main>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for cat, msg in messages %}<div class="flash {{ cat }}">{{ msg }}</div>{% endfor %}
+  {% endwith %}
+  {% block contenido %}{% endblock %}
+</main>
+</body>
+</html>

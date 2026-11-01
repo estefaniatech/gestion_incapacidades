@@ -1,0 +1,11 @@
+Señores {{entidad}}
+
+Asunto: Requerimiento de cobro persuasivo No. {{numero}} — prestaciones económicas por incapacidad.
+
+Por medio de la presente se formula cobro persuasivo de la acreencia a favor de la organización, correspondiente a la incapacidad del colaborador {{colaborador}}, por {{dias}} días, valor estimado {{valor}}.
+
+Fundamentos: el empleador anticipó el pago de la prestación económica y la entidad debe reconocer y reintegrar dichos valores conforme a la normatividad del Sistema General de Seguridad Social en Salud / Riesgos Laborales.
+
+Se solicita el reconocimiento y pago de la incapacidad o licencia, y se deja constancia de esta gestión para el seguimiento de cartera.
+
+Administración de Personal

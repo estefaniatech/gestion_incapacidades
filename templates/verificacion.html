@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Verificación documental 5.1.2 · #{{ item.id }}</h1>
+<div class="card">
+  <p><strong>{{ item.colaborador.nombre_completo }}</strong> · {{ item.tipo }} · {{ item.dias }} días · {{ item.entidad }}</p>
+  <p>Diagnóstico: {{ item.diagnostico_visible }}</p>
+  <p>Estado: {{ item.estado }} · Llamados: {{ item.llamados_documentacion }} · Límite transcripción: {{ item.fecha_limite_transcripcion }}</p>
+</div>
+<table>
+  <tr><th>Documento</th><th>Recibido</th><th>Adjuntar</th></tr>
+  {% for d in docs %}
+  <tr>
+    <td>{{ d.etiqueta }}</td>
+    <td>{{ "sí" if d.recibido else "no" }}</td>
+    <td>
+      <form method="post" enctype="multipart/form-data">
+        <input type="hidden" name="accion" value="adjuntar">
+        <input type="hidden" name="documento_id" value="{{ d.id }}">
+        <input type="file" name="archivo">
+        <button>Marcar recibido</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+<form method="post"><input type="hidden" name="accion" value="evaluar"><p><button>Evaluar documentación</button></p></form>
+{% endblock %}

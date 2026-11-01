@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Recepción 5.1.1</h1>
+<p><a class="btn" href="{{ url_for('recepcion.nueva') }}">Nueva</a></p>
+<table>
+  <tr><th>ID</th><th>Colaborador</th><th>Canal</th><th>Física</th><th>Estado</th></tr>
+  {% for i in items %}
+  <tr>
+    <td>{{ i.id }}</td><td>{{ i.colaborador.nombre_completo }}</td>
+    <td>{{ i.canal_recepcion }}</td><td>{{ "sí" if i.fisica_recibida else "pendiente" }}</td>
+    <td><a href="{{ url_for('verificacion.detalle', incapacidad_id=i.id) }}">{{ i.estado }}</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

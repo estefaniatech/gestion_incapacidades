@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Usuarios</h1>
+<div class="card">
+  <form method="post">
+    <input name="usuario" placeholder="usuario" required>
+    <input name="nombre" placeholder="nombre" required>
+    <input name="email" placeholder="email" required>
+    <select name="rol">{% for r in roles %}<option value="{{ r.value }}">{{ r.value }}</option>{% endfor %}</select>
+    <input name="password" placeholder="contraseña" required>
+    <button>Crear</button>
+  </form>
+</div>
+<table>
+  <tr><th>Usuario</th><th>Nombre</th><th>Rol</th></tr>
+  {% for u in usuarios %}<tr><td>{{ u.usuario }}</td><td>{{ u.nombre }}</td><td>{{ u.rol }}</td></tr>{% endfor %}
+</table>
+{% endblock %}

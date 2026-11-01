@@ -1,0 +1,11 @@
+Señores {{entidad}}
+
+Asunto: {{tipo_accion}} — reconocimiento económico de incapacidad / licencia.
+
+Respetuosamente me dirijo a ustedes en ejercicio del derecho de petición, con el fin de solicitar el reconocimiento y pago de la prestación económica asociada a la incapacidad del colaborador {{colaborador}}, radicado {{radicado}}.
+
+Causal invocada: {{causal}}
+
+Si la causal de negación es improcedente, o si existe incumplimiento del tiempo promesa de pago de una incapacidad ya aprobada, se requiere el pago inmediato. De no obtener respuesta, se evaluará la radicación de acción de tutela.
+
+Jurídica

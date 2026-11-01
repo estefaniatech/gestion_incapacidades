@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Novedades de nómina</h1>
+<form method="post" class="card">
+  <select name="incapacidad_id">
+    {% for i in incapacidades %}<option value="{{ i.id }}">#{{ i.id }} {{ i.colaborador.nombre_completo }}</option>{% endfor %}
+  </select>
+  <button>Generar novedad</button>
+</form>
+<table>
+  <tr><th>ID</th><th>Incapacidad</th><th>Tipo</th><th>Valor empresa</th></tr>
+  {% for n in novedades %}
+  <tr><td>{{ n.id }}</td><td>{{ n.incapacidad_id }}</td><td>{{ n.tipo_novedad }}</td><td>{{ formato_moneda(n.valor) }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

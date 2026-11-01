@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Jurídico 5.4.2</h1>
+<ul>
+  {% for i in items %}
+  <li>#{{ i.id }} {{ i.colaborador.nombre_completo }} · {{ i.estado }} · <a href="{{ url_for('juridico.detalle', incapacidad_id=i.id) }}">actuar</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

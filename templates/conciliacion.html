@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Conciliación {{ periodo }}</h1>
+<form method="post" class="card">
+  <input name="periodo" value="{{ periodo }}">
+  <select name="incapacidad_id">
+    <option value="">Saldo no identificado</option>
+    {% for i in pagadas %}<option value="{{ i.id }}">#{{ i.id }} {{ i.colaborador.nombre_completo }}</option>{% endfor %}
+  </select>
+  <input name="entidad" placeholder="entidad">
+  <input name="valor" placeholder="valor entidad">
+  <input name="notas" placeholder="notas">
+  <button>Registrar</button>
+</form>
+<table>
+  <tr><th>Entidad</th><th>Valor entidad</th><th>Interno</th><th>Dif.</th><th>ID</th></tr>
+  {% for f in filas %}
+  <tr>
+    <td>{{ f.entidad }}</td><td>{{ formato_moneda(f.valor_entidad) }}</td>
+    <td>{{ formato_moneda(f.valor_interno) }}</td><td>{{ formato_moneda(f.diferencia) }}</td>
+    <td>{{ f.incapacidad_id or "no identificado" }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

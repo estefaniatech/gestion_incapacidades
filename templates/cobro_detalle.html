@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Cobro #{{ item.id }} · {{ item.colaborador.nombre_completo }}</h1>
+<form method="post" class="card">
+  <input type="hidden" name="accion" value="estado">
+  <select name="estado">{% for e in estados %}<option value="{{ e.value }}" {% if item.estado==e.value %}selected{% endif %}>{{ e.value }}</option>{% endfor %}</select>
+  <input name="motivo_rechazo" placeholder="causal de rechazo">
+  <input type="date" name="fecha_promesa_pago">
+  <input type="date" name="fecha_pago">
+  <input name="valor_pagado_entidad" placeholder="valor pagado">
+  <button>Actualizar estado</button>
+</form>
+<form method="post" class="card">
+  <input name="canal" placeholder="canal (portal, correo)">
+  <input name="resultado" placeholder="resultado">
+  <input name="evidencia" placeholder="evidencia / radicado">
+  <button>Registrar gestión semanal</button>
+</form>
+<ul>{% for g in gestiones %}<li>{{ g.fecha }} · {{ g.canal }} · {{ g.resultado }}</li>{% endfor %}</ul>
+{% endblock %}

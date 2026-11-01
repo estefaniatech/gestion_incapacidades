@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Cartera y cobro persuasivo</h1>
+<h3>Más de 180 días sin pago</h3>
+<table>
+  {% for i in panel.candidatas_180 %}
+  <tr>
+    <td>#{{ i.id }} {{ i.colaborador.nombre_completo }} {{ formato_moneda(i.valor_eps) }}</td>
+    <td>
+      <form class="inline" method="post" action="{{ url_for('cartera.requerimiento', incapacidad_id=i.id) }}"><button>Requerimiento</button></form>
+      <form class="inline" method="post" action="{{ url_for('cartera.juridico', incapacidad_id=i.id) }}"><button>Trasladar a jurídico</button></form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+<h3>Pendientes</h3>
+<ul>{% for i in panel.pendientes %}<li>#{{ i.id }} {{ i.estado }} {{ formato_moneda(i.valor_eps) }}</li>{% endfor %}</ul>
+{% endblock %}

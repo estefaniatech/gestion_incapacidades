@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Reportar incapacidad</h1>
+<div class="card">
+<form method="post">
+  <p>Colaborador existente
+    <select name="colaborador_id">
+      <option value="">Nuevo colaborador</option>
+      {% for c in colaboradores %}<option value="{{ c.id }}">{{ c.nombre_completo }} - {{ c.documento }}</option>{% endfor %}
+    </select>
+  </p>
+  <p>Documento <input name="documento"> Nombres <input name="nombres"> Apellidos <input name="apellidos"></p>
+  <p>Email <input name="email"> Jefe <input name="nombre_jefe"> Email jefe <input name="email_jefe"></p>
+  <p>EPS <input name="entidad"> ARL <input name="arl"> AFP <input name="afp"> IBC mensual <input name="ibc_mensual" type="number" step="0.01"></p>
+  <p>Tipo
+    <select name="tipo">{% for t in tipos %}<option value="{{ t.value }}">{{ t.value }}</option>{% endfor %}</select>
+    Canal
+    <select name="canal_recepcion">{% for c in canales %}<option>{{ c }}</option>{% endfor %}</select>
+  </p>
+  <p>Inicio <input type="date" name="fecha_inicio" required> Fin <input type="date" name="fecha_fin" required>
+     Nacimiento (paternidad) <input type="date" name="fecha_nacimiento"></p>
+  <p>Diagnóstico <input name="diagnostico" size="50">
+     <label><input type="checkbox" name="fisica_recibida" value="1"> Documentación física recibida</label>
+     <label><input type="checkbox" name="ya_transcrita_eps" value="1"> Ya transcrita por EPS</label>
+  </p>
+  <p><textarea name="observaciones" placeholder="Observaciones"></textarea></p>
+  <button>Guardar y verificar documentos</button>
+</form>
+</div>
+{% endblock %}

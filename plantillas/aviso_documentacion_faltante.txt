@@ -1,0 +1,12 @@
+Señor(a) {{colaborador}}:
+
+El proceso de Administración de Personal le informa que su incapacidad no cuenta con la información completa.
+
+Documentos faltantes: {{faltantes}}
+
+Tiene {{dias}} días hábiles para hacer llegar la documentación correspondiente (llamado {{llamado}}).
+
+Si no allega la documentación en el tiempo establecido se realizará un segundo llamado, e informaremos que de no hacerla llegar será citado con la Coordinación de Administración de Personal.
+
+Cordialmente,
+Administración de Personal

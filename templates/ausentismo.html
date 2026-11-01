@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Ausentismo · SG-SST</h1>
+<p class="muted">{% if a_tiempo %}Está dentro de los primeros 3 días del mes.{% else %}El procedimiento pide enviar el informe los primeros 3 días; igual puede generarlo.{% endif %}</p>
+<form method="post"><button>Generar y enviar a SG-SST</button></form>
+{% for r in reportes %}
+<pre class="card">{{ r.periodo }} · {{ r.generado_en }}
+{{ r.contenido }}</pre>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.idea/
+.vscode/
+data/*.db
+data/*.db-journal
+archivos_digitales/*
+!archivos_digitales/.gitkeep
+reportes/*
+!reportes/.gitkeep
+.env
+*.zip

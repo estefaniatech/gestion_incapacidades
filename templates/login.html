@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block contenido %}
+<div class="card" style="max-width:420px;margin:40px auto;">
+  <h2>Ingreso</h2>
+  <p class="muted">Usuario inicial: <strong>admin</strong> / contraseña: <strong>admin123</strong></p>
+  <form method="post">
+    <p><label>Usuario<br><input name="usuario" required></label></p>
+    <p><label>Contraseña<br><input type="password" name="password" required></label></p>
+    <button>Entrar</button>
+  </form>
+</div>
+{% endblock %}

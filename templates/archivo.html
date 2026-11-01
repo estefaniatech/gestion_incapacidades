@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Archivo 5.3 / paso 16</h1>
+<table>
+  {% for i in items %}
+  <tr>
+    <td>#{{ i.id }} {{ i.colaborador.nombre_completo }} · {{ i.entidad }} · {{ i.fecha_inicio }}</td>
+    <td>
+      <form class="inline" method="post">
+        <input type="hidden" name="incapacidad_id" value="{{ i.id }}">
+        <input name="ubicacion" placeholder="carpeta / estante">
+        <button>Enviar a gestión documental</button>
+      </form>
+      <form class="inline" method="post">
+        <input type="hidden" name="incapacidad_id" value="{{ i.id }}">
+        <input type="hidden" name="accion" value="destruir">
+        <button>Destruir epicrisis</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

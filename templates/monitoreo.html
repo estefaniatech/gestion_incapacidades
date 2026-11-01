@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Monitoreo 5.5.3</h1>
+<div class="card">
+  <form class="inline" method="post" action="{{ url_for('monitoreo.alerta_concepto') }}"><button>Avisar EPS/ARL/AFP sin concepto</button></form>
+  <form class="inline" method="post" action="{{ url_for('monitoreo.alerta_suspension') }}"><button>Avisar suspensión >180</button></form>
+</div>
+<h3>Hitos 90 / 120 / 150 / 180</h3>
+<table>
+  <tr><th>Colaborador</th><th>Días</th><th>Hitos</th></tr>
+  {% for h in panel.hitos %}
+  <tr><td>{{ h.colaborador.nombre_completo }}</td><td>{{ h.dias }}</td><td>{{ h.hitos }}</td></tr>
+  {% endfor %}
+</table>
+<h3>Concepto de rehabilitación</h3>
+{% for p in panel.pendientes_concepto %}
+<div class="card">
+  {{ p.colaborador.nombre_completo }} · {{ p.dias }} días
+  <form method="post" action="{{ url_for('monitoreo.concepto') }}">
+    <input type="hidden" name="colaborador_id" value="{{ p.colaborador.id }}">
+    <select name="resultado"><option>favorable</option><option>desfavorable</option></select>
+    <label><input type="checkbox" name="enviado_afp"> Enviado a AFP</label>
+    <input name="notas" placeholder="notas">
+    <button>Registrar</button>
+  </form>
+</div>
+{% endfor %}
+<h3>Reintegros EPS a trabajadores</h3>
+<form method="post" action="{{ url_for('monitoreo.reintegro') }}" class="card">
+  <input name="colaborador_id" placeholder="ID colaborador">
+  <input name="incapacidad_id" placeholder="ID incapacidad">
+  <input name="valor" placeholder="valor">
+  <button>Registrar reintegro</button>
+</form>
+<ul>{% for r in panel.reintegros %}<li>#{{ r.id }} colaborador {{ r.colaborador_id }} ${{ r.valor }}</li>{% endfor %}</ul>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Tablero</h1>
+<div class="grid">
+  {% for estado, n in conteo.items() %}
+  <div class="kpi"><div class="muted">{{ estado }}</div><strong>{{ n }}</strong></div>
+  {% endfor %}
+</div>
+<div class="card">
+  <h3>Últimas recepciones</h3>
+  <table>
+    <tr><th>ID</th><th>Colaborador</th><th>Tipo</th><th>Días</th><th>Estado</th><th></th></tr>
+    {% for i in items %}
+    <tr>
+      <td>{{ i.id }}</td>
+      <td>{{ i.colaborador.nombre_completo }}</td>
+      <td>{{ i.tipo }}</td>
+      <td>{{ i.dias }} (acum. {{ i.dias_acumulados }})</td>
+      <td>{{ i.estado }}</td>
+      <td><a class="btn" href="{{ url_for('verificacion.detalle', incapacidad_id=i.id) }}">Ver</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+<p><a class="btn" href="{{ url_for('recepcion.nueva') }}">Registrar incapacidad</a></p>
+{% endblock %}

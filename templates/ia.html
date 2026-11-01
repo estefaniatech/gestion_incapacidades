@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Análisis de información</h1>
+<div class="card"><p>{{ analisis.narrativa }}</p></div>
+<ul>{% for a in analisis.alertas %}<li>{{ a }}</li>{% endfor %}</ul>
+<p>Cartera estimada: {{ formato_moneda(analisis.valor_eps_pendiente) }}</p>
+<h3>Recomendaciones</h3>
+<ul>{% for r in analisis.recomendaciones %}<li>{{ r }}</li>{% endfor %}</ul>
+{% endblock %}

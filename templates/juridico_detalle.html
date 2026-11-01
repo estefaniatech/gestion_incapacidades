@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Expediente jurídico #{{ item.id }}</h1>
+<form method="post" class="card">
+  <select name="tipo_accion">
+    <option value="derecho_peticion">Derecho de petición</option>
+    <option value="tutela">Acción de tutela</option>
+  </select>
+  <input name="causal" placeholder="causal (improcedente / incumplimiento de pago)">
+  <button>Generar</button>
+</form>
+<form method="post" class="card">
+  <input type="hidden" name="accion" value="decidir">
+  <select name="decision"><option value="recuperar">Recuperar</option><option value="baja">Dar de baja</option></select>
+  <button>Decidir</button>
+</form>
+<ul>{% for p in procesos %}<li>{{ p.fecha }} · {{ p.tipo_accion }} · {{ p.causal }}</li>{% endfor %}</ul>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Liquidación #{{ item.id }}</h1>
+<p>Empresa {{ formato_moneda(resultado.valor_empresa) }} · EPS {{ formato_moneda(resultado.valor_eps) }}</p>
+<table>
+  <tr><th>Día acum.</th><th>%</th><th>Pagador</th><th>Valor</th></tr>
+  {% for d in resultado.detalle %}
+  <tr><td>{{ d.dia }}</td><td>{{ d.porcentaje }}</td><td>{{ d.pagador }}</td><td>{{ formato_moneda(d.valor) }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}
